@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="704dp"
+        android:layout_height="708dp"
         android:layout_marginBottom="16dp"
         android:background="@android:color/white"
         android:elevation="2dp"
@@ -81,7 +81,7 @@
         <ImageView
             android:id="@+id/post_image"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
+            android:layout_height="353dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/novost"
