@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/design_default_color_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="704dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/logo"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/Новости"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/publication_date"
+                    android:layout_width="127dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/_19_13_36"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/more_options"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/fri"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/post_description"
+            android:layout_width="match_parent"
+            android:layout_height="159dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/design_default_color_background"
+            android:padding="4dp"
+            android:text="@string/_2025_300"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+
+        <ImageView
+            android:id="@+id/post_image"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/novost"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/like_button"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/like"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/like_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/_52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/comment_button"
+                    android:layout_width="34dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/comment"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/comment_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:text="@string/__52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/share_button"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/repost"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/share_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/___52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/view_count_button"
+                    android:layout_width="33dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/eye"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/view_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/_52_"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
