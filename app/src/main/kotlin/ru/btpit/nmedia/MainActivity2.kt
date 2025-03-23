@@ -1,6 +1,7 @@
 package ru.btpit.nmedia
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -24,7 +25,9 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var shareCountTextView: TextView
     private lateinit var viewCountTextView: TextView
     private lateinit var commentCountTextView: TextView
+    private lateinit var avatarButton: ImageButton
 
+    //Обработчик против ошибок логов
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +44,33 @@ class MainActivity2 : AppCompatActivity() {
             }
         }
 
+        //Обработчик события открытия и скрытия текста
+        val readMore: TextView = findViewById(R.id.read_more)
+        val fullText: TextView = findViewById(R.id.full_text)
+        val hideButton: TextView = findViewById(R.id.hide_button)
+
+
+        readMore.setOnClickListener {
+            fullText.visibility = View.VISIBLE
+            readMore.visibility = View.GONE
+            hideButton.visibility = View.VISIBLE
+        }
+
+
+        hideButton.setOnClickListener {
+            fullText.visibility = View.GONE
+            readMore.visibility = View.VISIBLE
+            hideButton.visibility = View.GONE
+        }
+
+        //Обработчик события лайков и репостов
         likeButton = findViewById(R.id.like_button)
         likeCountTextView = findViewById(R.id.like_count)
         commentCountTextView = findViewById(R.id.comment_count)
         shareButton = findViewById(R.id.share_button)
         shareCountTextView = findViewById(R.id.share_count)
         viewCountTextView = findViewById(R.id.view_count)
+        avatarButton = findViewById(R.id.avatar)
 
         setupListeners()
         updateUI()
@@ -60,6 +84,11 @@ class MainActivity2 : AppCompatActivity() {
         shareButton.setOnClickListener {
             shareCount++
             updateUI()
+        }
+        avatarButton.setOnClickListener {
+            // Переход на новую активность
+            val intent = Intent(this, CommunityActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -80,6 +109,7 @@ class MainActivity2 : AppCompatActivity() {
         commentCountTextView.text = formatCount(commentCount)
         shareCountTextView.text = formatCount(shareCount)
         viewCountTextView.text = formatCount(viewCount)
+
     }
 
     private fun formatCount(count: Int): String {

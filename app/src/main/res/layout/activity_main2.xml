@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_background">
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,9 +15,10 @@
     android:padding="16dp"
     android:background="@color/design_default_color_background">
 
+    <!-- Пост 1 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="708dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@android:color/white"
         android:elevation="2dp"
@@ -23,13 +31,14 @@
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/avatar"
-                android:layout_width="97dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
+                android:layout_width="99dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/logo"
-                tools:ignore="ContentDescription" />
+                android:background="@android:color/transparent"
+                tools:ignore="ContentDescription, SpeakableTextPresentCheck" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -39,8 +48,9 @@
 
                 <TextView
                     android:id="@+id/author_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/Новости"
                     android:textColor="@android:color/black"
@@ -49,8 +59,9 @@
 
                 <TextView
                     android:id="@+id/publication_date"
-                    android:layout_width="127dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
                     android:layout_marginTop="4dp"
                     android:text="@string/_19_13_36"
                     android:textColor="@android:color/darker_gray"
@@ -69,14 +80,46 @@
         <TextView
             android:id="@+id/post_description"
             android:layout_width="match_parent"
-            android:layout_height="159dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:background="@color/design_default_color_background"
             android:padding="4dp"
-            android:text="@string/_2025_300"
+            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона,"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/read_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Читать далее..."
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/full_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/hide_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Скрыть"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/post_image"
@@ -90,25 +133,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:baselineAligned="false"
-            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
                 android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/like_button"
-                    android:layout_width="32dp"
+                    android:layout_width="36dp"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
-                    android:contentDescription="@string/todo"
                     android:src="@drawable/like"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <TextView
                     android:id="@+id/like_count"
@@ -123,7 +161,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="16dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -147,7 +185,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="16dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -194,4 +232,439 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <!-- Пост 2 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/avatar2"
+                android:layout_width="99dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logo"
+                android:background="@android:color/transparent"
+                tools:ignore="ContentDescription, SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/author_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/Новости"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/publication_date2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/_19_13_36"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/more_options2"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/fri"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/post_description2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@color/design_default_color_background"
+            android:padding="4dp"
+            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона,"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/read_more2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Читать далее..."
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/full_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/hide_button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Скрыть"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/post_image2"
+            android:layout_width="match_parent"
+            android:layout_height="353dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/novost"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/like_button2"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/like"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/like_count2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/_52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/comment_button2"
+                    android:layout_width="34dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/comment"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/comment_count2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:text="@string/__52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/share_button2"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/repost"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/share_count2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/___52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/view_count_button2"
+                    android:layout_width="33dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/eye"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/view_count2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/_52_"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Пост 3 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/avatar3"
+                android:layout_width="99dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logo"
+                android:background="@android:color/transparent"
+                tools:ignore="ContentDescription, SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/author_name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/Новости"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/publication_date3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/_19_13_36"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/more_options3"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/fri"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/post_description3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@color/design_default_color_background"
+            android:padding="4dp"
+            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона,"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/read_more3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Читать далее..."
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/full_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/hide_button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Скрыть"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/post_image3"
+            android:layout_width="match_parent"
+            android:layout_height="353dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/novost"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/like_button3"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/like"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/like_count3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/_52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/comment_button3"
+                    android:layout_width="34dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/comment"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/comment_count3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:text="@string/__52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/share_button3"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/repost"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/share_count3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/___52"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/view_count_button3"
+                    android:layout_width="33dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/eye"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/view_count3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/_52_"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
+</ScrollView>
