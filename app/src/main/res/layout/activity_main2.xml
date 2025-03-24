@@ -84,9 +84,11 @@
             android:layout_marginBottom="8dp"
             android:background="@color/design_default_color_background"
             android:padding="4dp"
-            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона,"
+            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона, узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/read_more"
@@ -100,15 +102,6 @@
             android:textSize="16sp"
             android:visibility="visible"
             tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
-            android:id="@+id/full_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:visibility="gone" />
 
         <TextView
             android:id="@+id/hide_button"
@@ -301,9 +294,11 @@
             android:layout_marginBottom="8dp"
             android:background="@color/design_default_color_background"
             android:padding="4dp"
-            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона,"
+            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона, узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/read_more2"
@@ -317,15 +312,6 @@
             android:textSize="16sp"
             android:visibility="visible"
             tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
-            android:id="@+id/full_text2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:visibility="gone" />
 
         <TextView
             android:id="@+id/hide_button2"
@@ -518,9 +504,11 @@
             android:layout_marginBottom="8dp"
             android:background="@color/design_default_color_background"
             android:padding="4dp"
-            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона,"
+            android:text="В 2025 году отмечается 300-летие Воронежской губернии. В честь этого важного события мы предлагаем окунуться в историю региона, узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/read_more3"
@@ -534,15 +522,6 @@
             android:textSize="16sp"
             android:visibility="visible"
             tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
-            android:id="@+id/full_text3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" узнать больше о наших славных земляках и познакомиться с самыми неожиданными фактами о родном крае."
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:visibility="gone" />
 
         <TextView
             android:id="@+id/hide_button3"
