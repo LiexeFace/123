@@ -4,9 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -42,6 +46,9 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var viewCountTextView: TextView
     private lateinit var commentCountTextView: TextView
     private lateinit var avatarButton: ImageButton
+    private lateinit var postDescription: TextView
+    private lateinit var postContainer: View
+    private lateinit var moreOptionsButton: ImageButton
 
     // Post 2 views
     private lateinit var likeButton2: ImageButton
@@ -51,6 +58,9 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var viewCountTextView2: TextView
     private lateinit var commentCountTextView2: TextView
     private lateinit var avatarButton2: ImageButton
+    private lateinit var postDescription2: TextView
+    private lateinit var postContainer2: View
+    private lateinit var moreOptionsButton2: ImageButton
 
     // Post 3 views
     private lateinit var likeButton3: ImageButton
@@ -60,8 +70,10 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var viewCountTextView3: TextView
     private lateinit var commentCountTextView3: TextView
     private lateinit var avatarButton3: ImageButton
+    private lateinit var postDescription3: TextView
+    private lateinit var postContainer3: View
+    private lateinit var moreOptionsButton3: ImageButton
 
-    //Обработчик против ошибок логов
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,9 +90,111 @@ class MainActivity2 : AppCompatActivity() {
             }
         }
 
-        //Обработчик события открытия и скрытия текста
+        // Initialize Post 1 views
+        likeButton = findViewById(R.id.like_button)
+        likeCountTextView = findViewById(R.id.like_count)
+        commentCountTextView = findViewById(R.id.comment_count)
+        shareButton = findViewById(R.id.share_button)
+        shareCountTextView = findViewById(R.id.share_count)
+        viewCountTextView = findViewById(R.id.view_count)
+        avatarButton = findViewById(R.id.avatar)
+        postDescription = findViewById(R.id.post_description)
+        postContainer = findViewById(R.id.post_container)
+        moreOptionsButton = findViewById(R.id.more_options)
+
+        // Initialize Post 2 views
+        likeButton2 = findViewById(R.id.like_button2)
+        likeCountTextView2 = findViewById(R.id.like_count2)
+        commentCountTextView2 = findViewById(R.id.comment_count2)
+        shareButton2 = findViewById(R.id.share_button2)
+        shareCountTextView2 = findViewById(R.id.share_count2)
+        viewCountTextView2 = findViewById(R.id.view_count2)
+        avatarButton2 = findViewById(R.id.avatar2)
+        postDescription2 = findViewById(R.id.post_description2)
+        postContainer2 = findViewById(R.id.post_container2)
+        moreOptionsButton2 = findViewById(R.id.more_options2)
+
+        // Initialize Post 3 views
+        likeButton3 = findViewById(R.id.like_button3)
+        likeCountTextView3 = findViewById(R.id.like_count3)
+        commentCountTextView3 = findViewById(R.id.comment_count3)
+        shareButton3 = findViewById(R.id.share_button3)
+        shareCountTextView3 = findViewById(R.id.share_count3)
+        viewCountTextView3 = findViewById(R.id.view_count3)
+        avatarButton3 = findViewById(R.id.avatar3)
+        postDescription3 = findViewById(R.id.post_description3)
+        postContainer3 = findViewById(R.id.post_container3)
+        moreOptionsButton3 = findViewById(R.id.more_options3)
+
+        setupListeners()
+        updateUI()
+    }
+
+    private fun setupListeners() {
+        // Post 1 listeners
+        likeButton.setOnClickListener {
+            toggleLike()
+        }
+
+        shareButton.setOnClickListener {
+            shareCount++
+            updateUI()
+        }
+
+        avatarButton.setOnClickListener {
+            val intent = Intent(this, CommunityActivity::class.java)
+            startActivity(intent)
+        }
+
+        moreOptionsButton.setOnClickListener {
+            showPostOptionsDialog(postContainer, postDescription)
+        }
+
+        // Post 2 listeners
+        likeButton2.setOnClickListener {
+            toggleLike2()
+        }
+
+        shareButton2.setOnClickListener {
+            shareCount2++
+            updateUI()
+        }
+
+        avatarButton2.setOnClickListener {
+            val intent = Intent(this, CommunityActivity::class.java)
+            startActivity(intent)
+        }
+
+        moreOptionsButton2.setOnClickListener {
+            showPostOptionsDialog(postContainer2, postDescription2)
+        }
+
+        // Post 3 listeners
+        likeButton3.setOnClickListener {
+            toggleLike3()
+        }
+
+        shareButton3.setOnClickListener {
+            shareCount3++
+            updateUI()
+        }
+
+        avatarButton3.setOnClickListener {
+            val intent = Intent(this, CommunityActivity::class.java)
+            startActivity(intent)
+        }
+
+        moreOptionsButton3.setOnClickListener {
+            showPostOptionsDialog(postContainer3, postDescription3)
+        }
+
+        // Text handlers for all posts
+        setupTextHandlers()
+    }
+
+    private fun setupTextHandlers() {
+        // Post 1 text handlers
         val readMore: TextView = findViewById(R.id.read_more)
-        val postDescription: TextView = findViewById(R.id.post_description)
         val hideButton: TextView = findViewById(R.id.hide_button)
 
         readMore.setOnClickListener {
@@ -97,7 +211,6 @@ class MainActivity2 : AppCompatActivity() {
 
         // Post 2 text handlers
         val readMore2: TextView = findViewById(R.id.read_more2)
-        val postDescription2: TextView = findViewById(R.id.post_description2)
         val hideButton2: TextView = findViewById(R.id.hide_button2)
 
         readMore2.setOnClickListener {
@@ -114,7 +227,6 @@ class MainActivity2 : AppCompatActivity() {
 
         // Post 3 text handlers
         val readMore3: TextView = findViewById(R.id.read_more3)
-        val postDescription3: TextView = findViewById(R.id.post_description3)
         val hideButton3: TextView = findViewById(R.id.hide_button3)
 
         readMore3.setOnClickListener {
@@ -128,80 +240,45 @@ class MainActivity2 : AppCompatActivity() {
             readMore3.visibility = View.VISIBLE
             hideButton3.visibility = View.GONE
         }
-
-        // Initialize Post 1 views
-        likeButton = findViewById(R.id.like_button)
-        likeCountTextView = findViewById(R.id.like_count)
-        commentCountTextView = findViewById(R.id.comment_count)
-        shareButton = findViewById(R.id.share_button)
-        shareCountTextView = findViewById(R.id.share_count)
-        viewCountTextView = findViewById(R.id.view_count)
-        avatarButton = findViewById(R.id.avatar)
-
-        // Initialize Post 2 views
-        likeButton2 = findViewById(R.id.like_button2)
-        likeCountTextView2 = findViewById(R.id.like_count2)
-        commentCountTextView2 = findViewById(R.id.comment_count2)
-        shareButton2 = findViewById(R.id.share_button2)
-        shareCountTextView2 = findViewById(R.id.share_count2)
-        viewCountTextView2 = findViewById(R.id.view_count2)
-        avatarButton2 = findViewById(R.id.avatar2)
-
-        // Initialize Post 3 views
-        likeButton3 = findViewById(R.id.like_button3)
-        likeCountTextView3 = findViewById(R.id.like_count3)
-        commentCountTextView3 = findViewById(R.id.comment_count3)
-        shareButton3 = findViewById(R.id.share_button3)
-        shareCountTextView3 = findViewById(R.id.share_count3)
-        viewCountTextView3 = findViewById(R.id.view_count3)
-        avatarButton3 = findViewById(R.id.avatar3)
-
-        setupListeners()
-        updateUI()
     }
 
-    private fun setupListeners() {
-        // Post 1 listeners
-        likeButton.setOnClickListener {
-            toggleLike()
-        }
+    private fun showPostOptionsDialog(postContainer: View, postDescription: TextView) {
+        val options = arrayOf("Редактировать", "Удалить")
+        AlertDialog.Builder(this)
+            .setTitle("Выберите действие")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> {
+                        showEditDialog(postDescription)
+                    }
+                    1 -> {
+                        postContainer.visibility = View.GONE
+                        Toast.makeText(this, "Пост удален", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .show()
+    }
 
-        shareButton.setOnClickListener {
-            shareCount++
-            updateUI()
-        }
-        avatarButton.setOnClickListener {
-            val intent = Intent(this, CommunityActivity::class.java)
-            startActivity(intent)
-        }
+    private fun showEditDialog(postDescription: TextView) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_post, null)
+        val editText = dialogView.findViewById<EditText>(R.id.edit_text)
+        
+        // Установка текущего текста поста
+        editText.setText(postDescription.text)
 
-        // Post 2 listeners
-        likeButton2.setOnClickListener {
-            toggleLike2()
-        }
-
-        shareButton2.setOnClickListener {
-            shareCount2++
-            updateUI()
-        }
-        avatarButton2.setOnClickListener {
-            val intent = Intent(this, CommunityActivity::class.java)
-            startActivity(intent)
-        }
-
-        // Post 3 listeners
-        likeButton3.setOnClickListener {
-            toggleLike3()
-        }
-
-        shareButton3.setOnClickListener {
-            shareCount3++
-            updateUI()
-        }
-        avatarButton3.setOnClickListener {
-            val intent = Intent(this, CommunityActivity::class.java)
-            startActivity(intent)
-        }
+        AlertDialog.Builder(this)
+            .setTitle("Редактировать пост")
+            .setView(dialogView)
+            .setPositiveButton("Сохранить") { _, _ ->
+                val newText = editText.text.toString()
+                if (newText.isNotEmpty()) {
+                    postDescription.text = newText
+                    Toast.makeText(this, "Пост отредактирован", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Отмена", null)
+            .show()
     }
 
     private fun toggleLike() {

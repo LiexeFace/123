@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 
@@ -76,6 +78,7 @@ class CommunityActivity : AppCompatActivity() {
         val hideButton = postView.findViewById<TextView>(R.id.hide_button)
         val postDescription = postView.findViewById<TextView>(R.id.post_description)
         val postImage = postView.findViewById<ImageView>(R.id.post_image)
+        val moreOptionsButton = postView.findViewById<ImageButton>(R.id.more_options)
 
         // Установка изображения поста в зависимости от номера поста
         when (currentPostCount % 3) {
@@ -121,8 +124,52 @@ class CommunityActivity : AppCompatActivity() {
             hideButton.visibility = View.GONE
         }
 
+        // Обработчик нажатия на кнопку с тремя точками
+        moreOptionsButton.setOnClickListener {
+            showPostOptionsDialog(postView, postDescription)
+        }
+
         // Добавление поста в контейнер
         postsContainer.addView(postView)
         currentPostCount++
+    }
+
+    private fun showPostOptionsDialog(postView: View, postDescription: TextView) {
+        val options = arrayOf("Редактировать", "Удалить")
+        AlertDialog.Builder(this)
+            .setTitle("Выберите действие")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> {
+                        showEditDialog(postDescription)
+                    }
+                    1 -> {
+                        postsContainer.removeView(postView)
+                        Toast.makeText(this, "Пост удален", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .show()
+    }
+
+    private fun showEditDialog(postDescription: TextView) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_post, null)
+        val editText = dialogView.findViewById<EditText>(R.id.edit_text)
+        
+        // Установка текущего текста поста
+        editText.setText(postDescription.text)
+
+        AlertDialog.Builder(this)
+            .setTitle("Редактировать пост")
+            .setView(dialogView)
+            .setPositiveButton("Сохранить") { _, _ ->
+                val newText = editText.text.toString()
+                if (newText.isNotEmpty()) {
+                    postDescription.text = newText
+                    Toast.makeText(this, "Пост отредактирован", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Отмена", null)
+            .show()
     }
 }
