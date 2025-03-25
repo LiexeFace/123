@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -76,21 +77,27 @@
 
         <TextView
             android:id="@+id/read_more"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
             android:text="Читать далее..."
-            android:textColor="@color/design_default_color_primary"
-            android:visibility="visible" />
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/hide_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:text="Скрыть"
-            android:textColor="@color/design_default_color_primary"
-            android:visibility="gone" />
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/post_image"
@@ -181,19 +188,19 @@
                 android:gravity="end"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/view_count_button"
                     android:layout_width="33dp"
                     android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:src="@drawable/eye" />
+                    android:src="@drawable/eye"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/view_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:text="@string/_52_"
+                    android:text="1300000"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>

@@ -17,28 +17,28 @@ import androidx.core.view.WindowInsetsCompat
 import ru.btpit.nmedia.R
 
 class MainActivity2 : AppCompatActivity() {
-    // Post 1 variables
+    // Пост 1
     private var likeCount = 51999
     private var commentCount = 1600
     private var shareCount = 520
     private var viewCount = 1300000
     private var isLiked = false
 
-    // Post 2 variables
+    // Пост 2
     private var likeCount2 = 51999
     private var commentCount2 = 1600
     private var shareCount2 = 520
     private var viewCount2 = 1300000
     private var isLiked2 = false
 
-    // Post 3 variables
+    // Пост 3
     private var likeCount3 = 51999
     private var commentCount3 = 1600
     private var shareCount3 = 520
     private var viewCount3 = 1300000
     private var isLiked3 = false
 
-    // Post 1 views
+    // Пост1
     private lateinit var likeButton: ImageButton
     private lateinit var likeCountTextView: TextView
     private lateinit var shareButton: ImageButton
@@ -50,7 +50,7 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var postContainer: View
     private lateinit var moreOptionsButton: ImageButton
 
-    // Post 2 views
+    // Пост2
     private lateinit var likeButton2: ImageButton
     private lateinit var likeCountTextView2: TextView
     private lateinit var shareButton2: ImageButton
@@ -62,7 +62,7 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var postContainer2: View
     private lateinit var moreOptionsButton2: ImageButton
 
-    // Post 3 views
+    // Пост3
     private lateinit var likeButton3: ImageButton
     private lateinit var likeCountTextView3: TextView
     private lateinit var shareButton3: ImageButton
@@ -90,7 +90,7 @@ class MainActivity2 : AppCompatActivity() {
             }
         }
 
-        // Initialize Post 1 views
+        // Инцилизация пост1
         likeButton = findViewById(R.id.like_button)
         likeCountTextView = findViewById(R.id.like_count)
         commentCountTextView = findViewById(R.id.comment_count)
@@ -102,7 +102,7 @@ class MainActivity2 : AppCompatActivity() {
         postContainer = findViewById(R.id.post_container)
         moreOptionsButton = findViewById(R.id.more_options)
 
-        // Initialize Post 2 views
+        // Инцилизация пост2
         likeButton2 = findViewById(R.id.like_button2)
         likeCountTextView2 = findViewById(R.id.like_count2)
         commentCountTextView2 = findViewById(R.id.comment_count2)
@@ -114,7 +114,7 @@ class MainActivity2 : AppCompatActivity() {
         postContainer2 = findViewById(R.id.post_container2)
         moreOptionsButton2 = findViewById(R.id.more_options2)
 
-        // Initialize Post 3 views
+        // Инцилизация пост3
         likeButton3 = findViewById(R.id.like_button3)
         likeCountTextView3 = findViewById(R.id.like_count3)
         commentCountTextView3 = findViewById(R.id.comment_count3)
@@ -131,7 +131,7 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        // Post 1 listeners
+
         likeButton.setOnClickListener {
             toggleLike()
         }
@@ -150,7 +150,7 @@ class MainActivity2 : AppCompatActivity() {
             showPostOptionsDialog(postContainer, postDescription)
         }
 
-        // Post 2 listeners
+
         likeButton2.setOnClickListener {
             toggleLike2()
         }
@@ -169,7 +169,7 @@ class MainActivity2 : AppCompatActivity() {
             showPostOptionsDialog(postContainer2, postDescription2)
         }
 
-        // Post 3 listeners
+
         likeButton3.setOnClickListener {
             toggleLike3()
         }
@@ -188,12 +188,12 @@ class MainActivity2 : AppCompatActivity() {
             showPostOptionsDialog(postContainer3, postDescription3)
         }
 
-        // Text handlers for all posts
+
         setupTextHandlers()
     }
 
     private fun setupTextHandlers() {
-        // Post 1 text handlers
+
         val readMore: TextView = findViewById(R.id.read_more)
         val hideButton: TextView = findViewById(R.id.hide_button)
 
@@ -209,7 +209,7 @@ class MainActivity2 : AppCompatActivity() {
             hideButton.visibility = View.GONE
         }
 
-        // Post 2 text handlers
+
         val readMore2: TextView = findViewById(R.id.read_more2)
         val hideButton2: TextView = findViewById(R.id.hide_button2)
 
@@ -225,7 +225,7 @@ class MainActivity2 : AppCompatActivity() {
             hideButton2.visibility = View.GONE
         }
 
-        // Post 3 text handlers
+
         val readMore3: TextView = findViewById(R.id.read_more3)
         val hideButton3: TextView = findViewById(R.id.hide_button3)
 
@@ -318,19 +318,19 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        // Update Post 1
+
         likeCountTextView.text = formatCount(likeCount)
         commentCountTextView.text = formatCount(commentCount)
         shareCountTextView.text = formatCount(shareCount)
         viewCountTextView.text = formatCount(viewCount)
 
-        // Update Post 2
+
         likeCountTextView2.text = formatCount(likeCount2)
         commentCountTextView2.text = formatCount(commentCount2)
         shareCountTextView2.text = formatCount(shareCount2)
         viewCountTextView2.text = formatCount(viewCount2)
 
-        // Update Post 3
+
         likeCountTextView3.text = formatCount(likeCount3)
         commentCountTextView3.text = formatCount(commentCount3)
         shareCountTextView3.text = formatCount(shareCount3)

@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="4dp"
-                    android:text="@string/_19_13_36"
+                    android:text="3 апреля 19:13"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -147,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:text="@string/_52"
+                    android:text="51999"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -171,7 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
-                    android:text="@string/__52"
+                    android:text="1600"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -195,7 +195,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:text="@string/___52"
+                    android:text="520"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -207,20 +207,19 @@
                 android:gravity="end"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/view_count_button"
                     android:layout_width="33dp"
                     android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
                     android:src="@drawable/eye"
-                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/view_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:text="@string/_52_"
+                    android:text="1300000"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -275,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="4dp"
-                    android:text="@string/_19_13_36"
+                    android:text="4 апреля 20:15"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -332,7 +331,7 @@
             android:layout_height="353dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/novost"
+            android:src="@drawable/novost2"
             tools:ignore="ContentDescription" />
 
         <LinearLayout
@@ -358,7 +357,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:text="@string/_52"
+                    android:text="48999"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -382,7 +381,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
-                    android:text="@string/__52"
+                    android:text="1450"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -406,7 +405,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:text="@string/___52"
+                    android:text="480"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -418,20 +417,19 @@
                 android:gravity="end"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/view_count_button2"
                     android:layout_width="33dp"
                     android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
                     android:src="@drawable/eye"
-                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/view_count2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:text="@string/_52_"
+                    android:text="1250000"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -486,7 +484,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="4dp"
-                    android:text="@string/_19_13_36"
+                    android:text="5 апреля 21:30"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -543,7 +541,7 @@
             android:layout_height="353dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/novost"
+            android:src="@drawable/novost3"
             tools:ignore="ContentDescription" />
 
         <LinearLayout
@@ -569,7 +567,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:text="@string/_52"
+                    android:text="45999"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -593,7 +591,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
-                    android:text="@string/__52"
+                    android:text="1300"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -617,7 +615,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:text="@string/___52"
+                    android:text="450"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -629,20 +627,19 @@
                 android:gravity="end"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/view_count_button3"
                     android:layout_width="33dp"
                     android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
                     android:src="@drawable/eye"
-                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/view_count3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:text="@string/_52_"
+                    android:text="1200000"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>

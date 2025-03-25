@@ -14,6 +14,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.Calendar
 
 class CommunityActivity : AppCompatActivity() {
     private lateinit var postsContainer: LinearLayout
@@ -21,6 +25,35 @@ class CommunityActivity : AppCompatActivity() {
     private var currentPostCount = 0
     private val postsPerLoad = 3
     private var isLoading = false
+    private val dateFormat = SimpleDateFormat("d MMMM HH:mm", Locale("ru"))
+
+    private fun formatCount(count: Int): String {
+        return when {
+            count >= 1_000_000 -> {
+                val millions = count / 1_000_000.0
+                if (millions % 1 == 0.0) {
+                    "${millions.toInt()}M"
+                } else {
+                    String.format("%.1fM", millions).replace(",", ".").trimEnd('0')
+                        .trimEnd('.')
+                }
+            }
+            count >= 10_000 -> {
+                if (count % 1000 == 0) {
+                    "${count / 1000}K"
+                } else {
+                    "${(count / 1000).toInt()}K"
+                }
+            }
+            count >= 1_100 -> {
+                String.format("%.1fK", count / 1000.0).replace(",", ".")
+            }
+            count >= 1_000 -> {
+                "1K"
+            }
+            else -> count.toString()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +64,11 @@ class CommunityActivity : AppCompatActivity() {
 
         val subscribeButton: Button = findViewById(R.id.subscribeButton)
         val messageButton: Button = findViewById(R.id.messageButton)
+        val backButton: ImageButton = findViewById(R.id.backButton)
+
+        backButton.setOnClickListener {
+            finish()
+        }
 
         subscribeButton.setOnClickListener {
             Toast.makeText(this, "Вы подписались на сообщество БТПИТ!", Toast.LENGTH_SHORT).show()
@@ -79,6 +117,13 @@ class CommunityActivity : AppCompatActivity() {
         val postDescription = postView.findViewById<TextView>(R.id.post_description)
         val postImage = postView.findViewById<ImageView>(R.id.post_image)
         val moreOptionsButton = postView.findViewById<ImageButton>(R.id.more_options)
+        val publicationDate = postView.findViewById<TextView>(R.id.publication_date)
+
+        // Установка даты публикации
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_MONTH, -currentPostCount) // Каждый пост на день раньше
+        val postDate = calendar.time
+        publicationDate.text = dateFormat.format(postDate)
 
         // Установка изображения поста в зависимости от номера поста
         when (currentPostCount % 3) {
@@ -88,11 +133,33 @@ class CommunityActivity : AppCompatActivity() {
         }
 
         // Установка начальных значений
-        var likeCount = 52
-        var shareCount = 52
-        var viewCount = 52
-        var commentCount = 52
+        var likeCount = when (currentPostCount % 3) {
+            0 -> 51999
+            1 -> 48999
+            else -> 45999
+        }
+        var shareCount = when (currentPostCount % 3) {
+            0 -> 520
+            1 -> 480
+            else -> 450
+        }
+        var viewCount = when (currentPostCount % 3) {
+            0 -> 1300000
+            1 -> 1250000
+            else -> 1200000
+        }
+        var commentCount = when (currentPostCount % 3) {
+            0 -> 1600
+            1 -> 1450
+            else -> 1300
+        }
         var isLiked = false
+
+        // Установка начальных значений в TextView с форматированием
+        likeCountTextView.text = formatCount(likeCount)
+        shareCountTextView.text = formatCount(shareCount)
+        viewCountTextView.text = formatCount(viewCount)
+        commentCountTextView.text = formatCount(commentCount)
 
         // Обработчики событий
         likeButton.setOnClickListener {
@@ -104,12 +171,12 @@ class CommunityActivity : AppCompatActivity() {
                 likeCount--
                 likeButton.setImageResource(R.drawable.like)
             }
-            likeCountTextView.text = likeCount.toString()
+            likeCountTextView.text = formatCount(likeCount)
         }
 
         shareButton.setOnClickListener {
             shareCount++
-            shareCountTextView.text = shareCount.toString()
+            shareCountTextView.text = formatCount(shareCount)
         }
 
         readMore.setOnClickListener {
@@ -136,7 +203,7 @@ class CommunityActivity : AppCompatActivity() {
 
     private fun showPostOptionsDialog(postView: View, postDescription: TextView) {
         val options = arrayOf("Редактировать", "Удалить")
-        AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this)
             .setTitle("Выберите действие")
             .setItems(options) { _, which ->
                 when (which) {
@@ -149,7 +216,11 @@ class CommunityActivity : AppCompatActivity() {
                     }
                 }
             }
-            .show()
+            .create()
+
+        // Применяем скругленные углы к диалогу
+        dialog.window?.setBackgroundDrawableResource(android.R.drawable.dialog_holo_light_frame)
+        dialog.show()
     }
 
     private fun showEditDialog(postDescription: TextView) {
@@ -159,7 +230,7 @@ class CommunityActivity : AppCompatActivity() {
         // Установка текущего текста поста
         editText.setText(postDescription.text)
 
-        AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this)
             .setTitle("Редактировать пост")
             .setView(dialogView)
             .setPositiveButton("Сохранить") { _, _ ->
@@ -170,6 +241,10 @@ class CommunityActivity : AppCompatActivity() {
                 }
             }
             .setNegativeButton("Отмена", null)
-            .show()
+            .create()
+
+        // Применяем скругленные углы к диалогу
+        dialog.window?.setBackgroundDrawableResource(android.R.drawable.dialog_holo_light_frame)
+        dialog.show()
     }
 }
