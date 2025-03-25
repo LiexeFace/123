@@ -1,6 +1,8 @@
 package ru.btpit.nmedia
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +24,7 @@ import java.util.Calendar
 class CommunityActivity : AppCompatActivity() {
     private lateinit var postsContainer: LinearLayout
     private lateinit var scrollView: NestedScrollView
+    private lateinit var videoLinkContainer: LinearLayout
     private var currentPostCount = 0
     private val postsPerLoad = 3
     private var isLoading = false
@@ -55,12 +58,21 @@ class CommunityActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community)
 
         postsContainer = findViewById(R.id.postsContainer)
         scrollView = findViewById(R.id.scrollView)
+        videoLinkContainer = findViewById(R.id.videoLinkContainer)
+
+        // Обработка клика по ссылке на видео
+        videoLinkContainer.setOnClickListener {
+            val videoUrl = "https://www.youtube.com/watch?v=qeQnMgega0k"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
+            startActivity(intent)
+        }
 
         val subscribeButton: Button = findViewById(R.id.subscribeButton)
         val messageButton: Button = findViewById(R.id.messageButton)
@@ -245,6 +257,13 @@ class CommunityActivity : AppCompatActivity() {
 
         // Применяем скругленные углы к диалогу
         dialog.window?.setBackgroundDrawableResource(android.R.drawable.dialog_holo_light_frame)
+        
+        // Устанавливаем голубой цвет для кнопок
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.setTextColor(getColor(android.R.color.holo_blue_light))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.setTextColor(getColor(android.R.color.holo_blue_light))
+        }
+        
         dialog.show()
     }
 }
