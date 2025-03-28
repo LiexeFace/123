@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
+import ru.btpit.nmedia.model.Post
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -117,6 +118,9 @@ class CommunityActivity : AppCompatActivity() {
     private fun addPost() {
         val postView = LayoutInflater.from(this).inflate(R.layout.item_post, null)
         
+        // Сохраняем индекс текущего поста
+        val currentIndex = currentPostCount
+        
         // Настройка кнопок и счетчиков
         val likeButton = postView.findViewById<ImageButton>(R.id.like_button)
         val likeCountTextView = postView.findViewById<TextView>(R.id.like_count)
@@ -133,34 +137,35 @@ class CommunityActivity : AppCompatActivity() {
 
         // Установка даты публикации
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_MONTH, -currentPostCount) // Каждый пост на день раньше
+        calendar.add(Calendar.DAY_OF_MONTH, -currentIndex) // Каждый пост на день раньше
         val postDate = calendar.time
         publicationDate.text = dateFormat.format(postDate)
 
         // Установка изображения поста в зависимости от номера поста
-        when (currentPostCount % 3) {
+        val imageIndex = currentIndex % 3
+        when (imageIndex) {
             0 -> postImage.setImageResource(R.drawable.novost)
             1 -> postImage.setImageResource(R.drawable.novost2)
             2 -> postImage.setImageResource(R.drawable.novost3)
         }
 
         // Установка начальных значений
-        var likeCount = when (currentPostCount % 3) {
+        var likeCount = when (imageIndex) {
             0 -> 51999
             1 -> 48999
             else -> 45999
         }
-        var shareCount = when (currentPostCount % 3) {
+        var shareCount = when (imageIndex) {
             0 -> 520
             1 -> 480
             else -> 450
         }
-        var viewCount = when (currentPostCount % 3) {
+        var viewCount = when (imageIndex) {
             0 -> 1300000
             1 -> 1250000
             else -> 1200000
         }
-        var commentCount = when (currentPostCount % 3) {
+        var commentCount = when (imageIndex) {
             0 -> 1600
             1 -> 1450
             else -> 1300
@@ -206,6 +211,25 @@ class CommunityActivity : AppCompatActivity() {
         // Обработчик нажатия на кнопку с тремя точками
         moreOptionsButton.setOnClickListener {
             showPostOptionsDialog(postView, postDescription)
+        }
+
+        // Добавляем обработчик клика по посту
+        postView.setOnClickListener {
+            val intent = Intent(this, PostActivity::class.java).apply {
+                putExtra("post", Post(
+                    id = currentIndex.toLong(),
+                    author = "БТПИТ",
+                    content = postDescription.text.toString(),
+                    published = publicationDate.text.toString(),
+                    likes = likeCount,
+                    shares = shareCount,
+                    views = viewCount,
+                    comments = commentCount,
+                    likedByMe = isLiked,
+                    imageIndex = imageIndex
+                ))
+            }
+            startActivityForResult(intent, currentIndex)
         }
 
         // Добавление поста в контейнер
@@ -265,5 +289,39 @@ class CommunityActivity : AppCompatActivity() {
         }
         
         dialog.show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && data != null) {
+            val postId = data.getLongExtra("post_id", -1)
+            val likes = data.getIntExtra("likes", 0)
+            val shares = data.getIntExtra("shares", 0)
+            val isLiked = data.getBooleanExtra("is_liked", false)
+            val content = data.getStringExtra("content")
+
+            // Обновляем данные в соответствующем посте
+            val postView = postsContainer.getChildAt(postId.toInt())
+            if (postView != null) {
+                val likeButton = postView.findViewById<ImageButton>(R.id.like_button)
+                val likeCountTextView = postView.findViewById<TextView>(R.id.like_count)
+                val shareCountTextView = postView.findViewById<TextView>(R.id.share_count)
+                val postDescription = postView.findViewById<TextView>(R.id.post_description)
+
+                likeCountTextView.text = formatCount(likes)
+                shareCountTextView.text = formatCount(shares)
+                
+                if (isLiked) {
+                    likeButton.setImageResource(R.drawable.likeactiv)
+                } else {
+                    likeButton.setImageResource(R.drawable.like)
+                }
+
+                // Обновляем текст поста, если он был изменен
+                content?.let {
+                    postDescription.text = it
+                }
+            }
+        }
     }
 }

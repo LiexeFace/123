@@ -1,7 +1,10 @@
 package ru.btpit.nmedia.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import com.google.gson.annotations.SerializedName
 
+@Parcelize
 data class Post(
     val id: Long,
     val author: String,
@@ -18,5 +21,6 @@ data class Post(
     @SerializedName("comments")
     var comments: Int = 0,
     @SerializedName("image_url")
-    val imageUrl: String? = null
-) 
+    val imageUrl: String? = null,
+    val imageIndex: Int = 0
+) : Parcelable 
